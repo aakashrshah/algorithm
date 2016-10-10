@@ -18,7 +18,7 @@ public class ArrayInput {
 		}
 		
 		for (int i=0;i<size;i++){
-			arraylist[i] = rand.nextInt()  % 100;
+			arraylist[i] = rand.nextInt()  % 10;
 		}
 		
 		return arraylist;
@@ -35,7 +35,7 @@ public class ArrayInput {
 		}
 		
 		for (int i=0;i<size;i++){
-			arraylist[i] = rand.nextInt()  % 100;
+			arraylist[i] = rand.nextInt()  % 10;
 		}
 		
 		return arraylist;
@@ -57,6 +57,6 @@ public class ArrayInput {
 	}
 	
 	public int[] getDummyArray(int size){
-		return arraylist = new int[] {0, 0, 0 ,-5, -4, 9, -5 };
+		return arraylist = new int[] {5, -9, -1, 0, 3, 6};
 	}
 }

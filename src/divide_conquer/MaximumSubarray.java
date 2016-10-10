@@ -31,7 +31,7 @@ public class MaximumSubarray {
 		int lastIndex = arraylist.length - 1;
 		System.out.println("\t" + "sum" + "\t" + "k" + "\t" + "r");
 		int kr[] = FindMaxSumSubArray(arraylist, startIndex, lastIndex);
-		System.out.println("\n\t" + kr[0] + "\t" + kr[1] + "\t" + kr[2]);
+		System.out.println("\n\t" + kr[0] + "\t" + (kr[1]+1) + "\t" + (kr[2]+1));
 	}
 	
 	public static int[] FindMaxSumSubArray(int[] arraylist, int startIndex, int lastIndex){

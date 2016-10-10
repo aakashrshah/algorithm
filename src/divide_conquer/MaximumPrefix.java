@@ -48,7 +48,7 @@ public class MaximumPrefix {
 				result[0] = sum;
 				result[1] = count;
 			}
-//			System.out.print(arraylist[0] + "\t" + newSum + "\t" + sum + "\n" );
+			System.out.print(arraylist[0] + "\t" + newSum + "\t" + sum + "\n" );
 			return result;
 		}
 		maximumPrefix(Arrays.copyOfRange(arraylist, 0, k+1), 0, k);
