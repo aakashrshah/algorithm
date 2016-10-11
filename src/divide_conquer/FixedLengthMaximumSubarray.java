@@ -7,7 +7,7 @@ import inputs.ArrayInput;
 public class FixedLengthMaximumSubarray {
 
 	static int[] arraylist;
-	final static int SIZE = 6;
+	final static int SIZE = 8;
 	static int result = 0;
 	static int count=0;
 	static int highestSum = 0;

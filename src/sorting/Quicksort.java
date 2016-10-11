@@ -1,75 +1,90 @@
 package sorting;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
+import inputs.ArrayInput;
 import partitioning.Partition;
 
 public class Quicksort {
 	static Partition pr;
-	private static List<Integer> arr;
+	static int[] arraylist;
+	final static int SIZE = 8;
 	
 	public static void main(String args[]){
-		Integer[] ints = new Integer[]{5,8,1,9,3,14,7,10,18,4};
-		arr = new ArrayList<Integer>();
-		arr.addAll(Arrays.asList(ints));
+		ArrayInput arr = new ArrayInput();
+		arraylist = new int[SIZE];
+		arraylist = arr.getDummyArray(SIZE);
+		for (int i : arraylist) {
+			System.out.print(i + " ");
+		}
+		System.out.println();
 		
-		int firstIndex = 0;
-		int lastIndex = arr.size() - 1;
-		System.out.println(arr);
+		int startIndex = 0;
+		int lastIndex = arraylist.length - 1;
 
-		arr = QuicksortAlgorithm(arr,firstIndex,lastIndex);	
-		System.out.println(arr);
+		int k = QuicksortAlgorithm(arraylist,startIndex,lastIndex);	
 	}
 
-	private static List<Integer> QuicksortAlgorithm(List<Integer> arr, int firstIndex, int lastIndex) {
+	private static int QuicksortAlgorithm(int[] array, int firstIndex, int lastIndex) {
 		int pivot = 0;
-		if(firstIndex >= lastIndex){
-			System.out.println("True");
-			return arr;
+		if(array.length <= 1){
+			return 0;
 		}
-		pivot = simplePartition(firstIndex,lastIndex);
-		System.out.println(firstIndex + " " + (pivot-1) + " " + pivot + " " + (pivot + 1)+ " " + lastIndex);
-		if(firstIndex < pivot){
-			QuicksortAlgorithm(arr.subList(firstIndex, pivot), firstIndex, pivot-1);
-		}
-		if(lastIndex > pivot){
-			QuicksortAlgorithm(arr.subList(pivot+1, lastIndex+1), pivot+1, lastIndex);
-		}
-				return arr;
+		pivot = simplePartition(array,firstIndex,lastIndex);
+//		System.out.println("\nPartitioning Element : " + arraylist[pivot] + "\n");
+		QuicksortAlgorithm(Arrays.copyOfRange(arraylist, 0, pivot), 0, pivot-1);
+		QuicksortAlgorithm(Arrays.copyOfRange(arraylist, pivot+1, lastIndex+1), pivot+1, lastIndex);
+		
+		return 0;
 	}
 	
-	public static int simplePartition(int p,int q){
+	public static int simplePartition(int[] array, int p,int q){
 		int i = p;
 		int j = q;
 		
-		int a = arr.get(p);
+		i = i - p;
+		j = j  - p;
+		
+		int a = array[i];
 		while(i<j){
-			while(arr.get(i) <= a){
+			while(array[i] <= a){
 				i++;
+				if(i == array.length){
+					i--;
+					break;
+				}
 			}
-			while(arr.get(j) > a){
+			while(array[j] > a){
 				j--;
+				if(j == -1){
+					j++; 
+					break;
+				}
 			}
 			if(i<j){
-				swap(arr,i,j);
+				swap(i + p,j + p);
 				i++;
 				j--;
 			}
 		}
-		swap(arr,p,j);
-		System.out.println(arr);
-		System.out.println(j);
-		System.out.println(arr.get(j));
+		j = j + p;
+		if(p!=j){
+			
+			swap(p,j);
+		}
+		
+		System.out.println();
+		for (int kl : arraylist) {
+			System.out.print(kl + " ");
+		}
 		return j;
 	}
 
-	private static void swap(List<Integer> arr, Integer i, Integer j) {
+	private static void swap(Integer i, Integer j) {
 		int temp;
-		temp = arr.get(i);
-		arr.set(i, arr.get(j));
-		arr.set(j, temp);
+		temp = arraylist[i];
+		arraylist[i] = arraylist[j];
+		arraylist[j] = temp;
 	}
 	
 }

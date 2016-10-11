@@ -1,7 +1,5 @@
 package divide_conquer;
 
-import java.util.Arrays;
-
 import inputs.ArrayInput;
 
 public class MaximumPrefix {
@@ -29,30 +27,29 @@ public class MaximumPrefix {
 		System.out.println();
 		int startIndex = 0;
 		int lastIndex = arraylist.length - 1;
+		
 		sum = arraylist[0];
 		int k[] = maximumPrefix(arraylist,startIndex,lastIndex);
 		System.out.println("\n" + k[0] + "\t" + k[1]);
 	}
 
-	public static int[] maximumPrefix(int[] arraylist, int startIndex, int lastIndex) {
+	public static int[] maximumPrefix(int[] array, int startIndex, int lastIndex) {
 
 		int k = (startIndex + lastIndex)/2;
-		k = k - startIndex;
-		lastIndex = lastIndex  - startIndex;
 		
-		if(arraylist.length == 1){
+		if(startIndex == lastIndex){
 			count++;
-			newSum += arraylist[0];
+			newSum += array[startIndex];
 			if(newSum >= sum){
 				sum = newSum;
 				result[0] = sum;
 				result[1] = count;
 			}
-			System.out.print(arraylist[0] + "\t" + newSum + "\t" + sum + "\n" );
+			System.out.print(array[startIndex] + "\t" + newSum + "\t" + sum + "\n" );
 			return result;
 		}
-		maximumPrefix(Arrays.copyOfRange(arraylist, 0, k+1), 0, k);
-		maximumPrefix(Arrays.copyOfRange(arraylist, k+1, lastIndex+1), k+1, lastIndex);
+		maximumPrefix(array, 0, k);
+		maximumPrefix(array, k+1, lastIndex);
 
 		return result;
 	}

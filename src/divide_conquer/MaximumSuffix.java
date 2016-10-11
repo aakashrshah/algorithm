@@ -1,7 +1,5 @@
 package divide_conquer;
 
-import java.util.Arrays;
-
 import inputs.ArrayInput;
 
 public class MaximumSuffix {
@@ -35,26 +33,24 @@ public class MaximumSuffix {
 		System.out.println("\n" + k[0] + "\t" + k[1]);
 	}
 
-	public static int[] maximumSuffix(int[] arraylist, int startIndex, int lastIndex) {
+	public static int[] maximumSuffix(int[] array, int startIndex, int lastIndex) {
 
 		int k = (startIndex + lastIndex)/2;
-		k = k - startIndex;
-		lastIndex = lastIndex  - startIndex;
 		
-		if(arraylist.length == 1){
+		if(startIndex == lastIndex){
 			count--;
-			newSum += arraylist[0];
+			newSum += array[startIndex];
 			if(newSum >= sum){
 				sum = newSum;
 				result[0] = sum;
 				result[1] = count;
 			}
-//			System.out.print(arraylist[0] + "\t" + newSum + "\t" + sum + "\n" );
+			System.out.print(array[startIndex] + "\t" + newSum + "\t" + sum + "\n" );
 			return result;
 		}
 		
-		maximumSuffix(Arrays.copyOfRange(arraylist, k+1, lastIndex+1), k+1, lastIndex);
-		maximumSuffix(Arrays.copyOfRange(arraylist, 0, k+1), 0, k);
+		maximumSuffix(array, k+1, lastIndex);
+		maximumSuffix(array, 0, k);
 
 		return result;
 	}
