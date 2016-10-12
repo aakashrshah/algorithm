@@ -57,6 +57,6 @@ public class ArrayInput {
 	}
 	
 	public int[] getDummyArray(int size){
-		return arraylist = new int[] {7,2,9,-6,1};
+		return arraylist = new int[] {5, 8, 1, 9, 3, 14, 7, 10, 18, 4 };
 	}
 }

@@ -18,7 +18,7 @@ public class MaximumSubarray2 {
 	public static void main(String args[]){
 		ArrayInput arr = new ArrayInput();
 		arraylist = new int[SIZE];
-		arraylist = arr.getDummyArray(SIZE);
+		arraylist = arr.getArray(SIZE);
 		
 		for (int i : arraylist) {
 			System.out.print(i + " ");
@@ -29,6 +29,7 @@ public class MaximumSubarray2 {
 		int lastIndex = arraylist.length - 1;
 		
 		int kr = FindMaxSumSubArray(arraylist, startIndex, lastIndex);
+		System.out.println(kr);
 	}
 	
 	public static int FindMaxSumSubArray(int[] array, int startIndex, int lastIndex){
@@ -36,39 +37,43 @@ public class MaximumSubarray2 {
 		int k = (startIndex + lastIndex)/2;
 
 		if(startIndex == lastIndex){
-			return array[0];
+			return array[startIndex];
 		}
 		
-		return max(
-				FindMaxSumSubArray(array, startIndex, k),
+		return max(FindMaxSumSubArray(array, startIndex, k),
 				FindMaxSumSubArray(array, k+1, lastIndex),
-				FindMaxCrossingSumArray(array,0,k,lastIndex)
+				FindMaxCrossingSumArray(array,0,k,lastIndex)				
 		);
-		
-	    
 	 }
 
 	private static int max(int findMaxSumSubArray, int findMaxSumSubArray2, int findMaxCrossingSumArray) {
 		// TODO Auto-generated method stub
+//		System.out.println( findMaxSumSubArray +" -> " + findMaxSumSubArray2+ " -> "+findMaxCrossingSumArray);
 		int max = Math.max(Math.max(findMaxSumSubArray, findMaxSumSubArray2), findMaxCrossingSumArray);
-		System.out.println("\n" + "-----------Max---------------\n" + max);
+//		System.out.println("\n" + "-----------Max--------------- " + max);
 		return max;
 	}
 
 	private static int FindMaxCrossingSumArray(int[] array, int i, int k, int lastIndex) {
 		
-		int sum = array[i];
-		int size = k + 1;
-		new MaximumPrefix(sum, size);
-		int mp[] = MaximumPrefix.maximumPrefix(array, i, k);
-		System.out.println("\n" + "-----------Max Prefix------------\n" + mp[0]);
-		
-		sum = array[k+1];
-		size = (lastIndex - (k+1)) + 1;
-		new MaximumSuffix(sum, size);
-		int ms[] = MaximumSuffix.maximumSuffix(array, k+1, lastIndex);
-		System.out.println("\n" + "----------Max Suffix----------------\n" + ms[0]);
-		
-		return ms[0] + mp[0];
+		int ssum = 0;
+		int left_sum = 0;
+		for (int iter = k; iter >= i; iter--)
+		{
+			ssum = ssum + array[iter];
+			if (ssum > left_sum)
+			left_sum = ssum;
+		}
+
+		ssum = 0;
+		int right_sum = 0;
+		for (int iter = k+1; iter <= lastIndex; iter++)
+		{
+			ssum = ssum + array[iter];
+			if (ssum > right_sum)
+			right_sum = ssum;
+		}
+
+		return left_sum + right_sum;
 	}
 }

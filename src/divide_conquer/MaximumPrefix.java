@@ -4,7 +4,7 @@ import inputs.ArrayInput;
 
 public class MaximumPrefix {
 	static int[] arraylist;
-	static int SIZE = 10;
+	static int SIZE = 5;
 	static int sum = 0;
 	static int newSum = 0;
 	static int[] result = new int[2];
@@ -28,32 +28,41 @@ public class MaximumPrefix {
 		int startIndex = 0;
 		int lastIndex = arraylist.length - 1;
 		
-		sum = arraylist[0];
-		int k[] = maximumPrefix(arraylist,startIndex,lastIndex);
-		System.out.println("\n" + k[0] + "\t" + k[1]);
+		sum = 0;
+		int k = maximumPrefixDivide(arraylist,startIndex,lastIndex,sum);
+		
+		System.out.println("\nMaximum Prefix Sum : " + newSum);
+//		System.out.println("\nMaximum Prefix Index : " + k);
 	}
 
-	public static int[] maximumPrefix(int[] array, int startIndex, int lastIndex) {
-
+	public static int maximumPrefixDivide(int[] array, int startIndex, int lastIndex,int tempsum){
+		
 		int k = (startIndex + lastIndex)/2;
 		
-		if(startIndex == lastIndex){
-			count++;
-			newSum += array[startIndex];
-			if(newSum >= sum){
-				sum = newSum;
-				result[0] = sum;
-				result[1] = count;
-			}
-			System.out.print(array[startIndex] + "\t" + newSum + "\t" + sum + "\n" );
-			return result;
+		tempsum = 0;
+		for(int i=startIndex;i<=lastIndex;i++){
+			tempsum += array[i];
 		}
-		maximumPrefix(array, 0, k);
-		maximumPrefix(array, k+1, lastIndex);
+		System.out.println(tempsum);
+		
+		if(startIndex == lastIndex){
+			sum += array[startIndex];
+			return array[startIndex];
+		}
 
-		return result;
+		
+		return 	maximumPrefixConquer(
+					maximumPrefixDivide(array, startIndex, k,tempsum),
+					maximumPrefixDivide(array, k+1, lastIndex,tempsum)
+		);
 	}
 
+	private static int maximumPrefixConquer(int maximumPrefixDivide, int maximumPrefixDivide2) {
+		// TODO Auto-generated method stub
+		
+		return 0;
+	}
+	
 }
 
 

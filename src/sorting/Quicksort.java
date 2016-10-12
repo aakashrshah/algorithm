@@ -1,16 +1,13 @@
 package sorting;
 
-import java.util.Arrays;
-
 import inputs.ArrayInput;
-import partitioning.Partition;
 
 public class Quicksort {
-	static Partition pr;
-	static int[] arraylist;
-	final static int SIZE = 8;
+
+	final static int SIZE = 10;
 	
 	public static void main(String args[]){
+		int[] arraylist;
 		ArrayInput arr = new ArrayInput();
 		arraylist = new int[SIZE];
 		arraylist = arr.getDummyArray(SIZE);
@@ -19,33 +16,26 @@ public class Quicksort {
 		}
 		System.out.println();
 		
+		
 		int startIndex = 0;
 		int lastIndex = arraylist.length - 1;
-
-		int k = QuicksortAlgorithm(arraylist,startIndex,lastIndex);	
+		QuicksortAlgorithm(arraylist,startIndex,lastIndex);	
 	}
 
-	private static int QuicksortAlgorithm(int[] array, int firstIndex, int lastIndex) {
+	private static void QuicksortAlgorithm(int[] array, int firstIndex, int lastIndex) {
 		int pivot = 0;
-		if(array.length <= 1){
-			return 0;
+		if(firstIndex >= lastIndex){
+			return;
 		}
 		pivot = simplePartition(array,firstIndex,lastIndex);
-//		System.out.println("\nPartitioning Element : " + arraylist[pivot] + "\n");
-		QuicksortAlgorithm(Arrays.copyOfRange(arraylist, 0, pivot), 0, pivot-1);
-		QuicksortAlgorithm(Arrays.copyOfRange(arraylist, pivot+1, lastIndex+1), pivot+1, lastIndex);
-		
-		return 0;
+		QuicksortAlgorithm(array, firstIndex, pivot-1);
+		QuicksortAlgorithm(array, pivot+1, lastIndex);
 	}
 	
 	public static int simplePartition(int[] array, int p,int q){
 		int i = p;
 		int j = q;
-		
-		i = i - p;
-		j = j  - p;
-		
-		int a = array[i];
+		int a = array[p];
 		while(i<j){
 			while(array[i] <= a){
 				i++;
@@ -56,35 +46,29 @@ public class Quicksort {
 			}
 			while(array[j] > a){
 				j--;
-				if(j == -1){
-					j++; 
-					break;
-				}
 			}
 			if(i<j){
-				swap(i + p,j + p);
+				swap(array,i,j);
 				i++;
 				j--;
 			}
 		}
-		j = j + p;
-		if(p!=j){
-			
-			swap(p,j);
-		}
+		swap(array,p,j);
+
 		
 		System.out.println();
-		for (int kl : arraylist) {
-			System.out.print(kl + " ");
-		}
+//		for (int kl : array) {
+//			System.out.print(kl + " ");
+//		}
+		System.out.println("Partitioning Element : " +j + "," + array[j]);
 		return j;
 	}
 
-	private static void swap(Integer i, Integer j) {
+	private static void swap(int[] array ,int i, int j) {
 		int temp;
-		temp = arraylist[i];
-		arraylist[i] = arraylist[j];
-		arraylist[j] = temp;
+		temp = array[i];
+		array[i] = array[j];
+		array[j] = temp;
 	}
 	
 }
