@@ -9,7 +9,6 @@ public class Quicksort {
 	public static void main(String args[]){
 		int[] arraylist;
 		ArrayInput arr = new ArrayInput();
-		arraylist = new int[SIZE];
 		arraylist = arr.getDummyArray(SIZE);
 		for (int i : arraylist) {
 			System.out.print(i + " ");
@@ -57,9 +56,9 @@ public class Quicksort {
 
 		
 		System.out.println();
-//		for (int kl : array) {
-//			System.out.print(kl + " ");
-//		}
+		for (int kl : array) {
+			System.out.print(kl + " ");
+		}
 		System.out.println("Partitioning Element : " +j + "," + array[j]);
 		return j;
 	}
