@@ -8,6 +8,7 @@ public class GraphInput {
 	Random rand = new Random();
 	Scanner scnr = new Scanner(System.in);
 	int SIZE=0;
+	int inf = 999;
 	
 	public GraphInput(int graphSize){
 		this.SIZE = graphSize;
@@ -173,20 +174,21 @@ public class GraphInput {
 	
 	public int[][] getDummyGraph(){
 		return graphmatrix = new int[][] {
-											{ 0,-1, 2, 3, 5}, 
-											{-1, 0,-1, 8, 3},
-											{-1,-1, 0,-1, 2},
-											{-1,-1,-1, 0,10},
-											{-1,-1,-1,-1, 0}
+											{0  ,inf,  2,   3,  5}, 
+											{inf,  0,inf,   8,  3},
+											{2  ,inf,  0, inf,  2},
+											{3  ,  8,inf,   0, 10},
+											{5  ,  3,  2,  10,  0}
 										};
 	}
 	
 	public void printGraph(int[][] graphmatrix){
 		for (int i=0;i<SIZE;i++){
 			for(int j=0;j<SIZE;j++){
-				System.out.print(graphmatrix[i][j] + " ");
+				System.out.print(graphmatrix[i][j] + "\t");
 			}
 			System.out.println("");
 		}
+		System.out.println("\n\n");
 	}
 }
