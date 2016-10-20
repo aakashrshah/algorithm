@@ -7,14 +7,9 @@ public class Quicksort {
 	final static int SIZE = 10;
 	
 	public static void main(String args[]){
-		int[] arraylist;
-		ArrayInput arr = new ArrayInput();
-		arraylist = arr.getDummyArray(SIZE);
-		for (int i : arraylist) {
-			System.out.print(i + " ");
-		}
-		System.out.println();
-		
+		ArrayInput arr = new ArrayInput(SIZE);
+		int arraylist[] = arr.getDummyArray();
+		arr.printArray(arraylist);
 		
 		int startIndex = 0;
 		int lastIndex = arraylist.length - 1;

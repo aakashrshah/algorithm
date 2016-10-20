@@ -8,14 +8,9 @@ public class MergeSort {
 	static int[] outputArray = new int[SIZE];
 	
 	public static void main(String args[]){
-		int[] arraylist;
-		ArrayInput arr = new ArrayInput();
-		arraylist = new int[SIZE];
-		arraylist = arr.getDummyArray(SIZE);
-		for (int i : arraylist) {
-			System.out.print(i + " ");
-		}
-		System.out.println();
+		ArrayInput arr = new ArrayInput(SIZE);
+		int arraylist[] = arr.getDummyArray();
+		arr.printArray(arraylist);
 		
 
 		int startIndex = 0;

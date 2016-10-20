@@ -18,14 +18,10 @@ public class MaximumSuffix {
 	}
 	
 	public static void main(String[] args) {
-		ArrayInput arr = new ArrayInput();
-		arraylist = new int[SIZE];
-		arraylist = arr.getArray(SIZE,1);
-
-		for (int i : arraylist) {
-			System.out.print(i + " ");
-		}
-		System.out.println();
+		ArrayInput arr = new ArrayInput(SIZE);
+		arraylist = arr.getArray();
+		arr.printArray(arraylist);
+		
 		int startIndex = 0;
 		int lastIndex = arraylist.length - 1;
 		sum = arraylist[arraylist.length - 1];

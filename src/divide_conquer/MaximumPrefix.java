@@ -6,58 +6,94 @@ public class MaximumPrefix {
 	static int[] arraylist;
 	static int SIZE = 5;
 	static int sum = 0;
-	static int newSum = 0;
-	static int[] result = new int[4];
-	static int ltemp = 0;
-	static int rtemp = 0;
-	
+
 	MaximumPrefix(int sumData,int sizeData){
 		MaximumPrefix.sum = sumData;
 		MaximumPrefix.SIZE = sizeData;
-		MaximumPrefix.newSum = 0;
 	}
 	
 	public static void main(String[] args) {
-		ArrayInput arr = new ArrayInput();
-		arraylist = new int[SIZE];
-		arraylist = arr.getDummyArray(SIZE);
-		for (int i : arraylist) {
-			System.out.print(i + " ");
-		}
-		System.out.println();
+		ArrayInput arr = new ArrayInput(SIZE);
+		arraylist = arr.getArray();
+		arr.printArray(arraylist);
+		
 		int startIndex = 0;
 		int lastIndex = arraylist.length - 1;
-		
-		ltemp = arraylist[0];
-		int k = maximumPrefixDivide(arraylist,startIndex,lastIndex,sum);
-		
-		System.out.println("\nMaximum Prefix Sum : " + k);
-//		System.out.println("\nMaximum Prefix Index : " + k);
+
+		maximumPrefixDivide(arraylist,startIndex,lastIndex);
 	}
 
-	public static int maximumPrefixDivide(int[] array, int startIndex, int lastIndex,int temp){
+	public static int[] maximumPrefixDivide(int[] array, int startIndex, int lastIndex){
 		
 		int k = (startIndex + lastIndex)/2;
-		
+
 		if(startIndex == lastIndex){
+			int leftMax = 0;
+			
+			int index = 0;
 			sum += array[startIndex];
-			return array[startIndex];
+			leftMax = array[startIndex];
+			index = startIndex;
+			int[] result = new int[3];
+			result[0] = leftMax;
+			result[1] = sum;
+			result[2] = index;
+			return result;
 		}
 
-		int leftMax = maximumPrefixDivide(array, startIndex, k,ltemp);
-		int rightMax = maximumPrefixDivide(array, k+1, lastIndex,rtemp);
+		int left[] = maximumPrefixDivide(array, startIndex, k);
+		int right[] = maximumPrefixDivide(array, k+1, lastIndex);
 		
-	
-		if((leftMax+rightMax) >= ltemp){
-			ltemp = sum;
-			leftMax = ltemp;
+		
+		for (int f : left) {
+			System.out.print(f + " ");
 		}
-				
-		return ltemp;
+		System.out.println();
 		
+		for (int f : right) {
+			System.out.print(f + " ");
+		}
+		System.out.println();
+		
+		
+		int[] result = new int[3];
+		
+		if(left[0] > right[0]){
+			if(left[0] + right[0] > right[1]){
+				result[0] = left[0] + right[0];
+				result[2] = right[2];
+			}else if (left[0] + right[0] == right[1]){
+				if(right[1] > left[1]){
+					result[0] = right[1];
+					result[2] = right[2];
+				}else{
+					result[0] = left[0];
+					result[2] = left[2];
+				}
+			}
+			else{
+				result[0] = left[0];
+				result[2] = left[2];
+			}
+			
+		}
+		else if (right[0] >= left[0]){
+			if(right[1] > left[1]){
+				result[0] = right[1];
+				result[2] = right[2];
+			}else{
+				result[0] = left[0];
+				result[2] = left[2];
+			}
+			
+		}
+		result[1] = right[1];
+		for (int f : result) {
+			System.out.print(f + " ");
+		}
+		System.out.println();
+		return result;
 	}
-
-	
 }
 
 

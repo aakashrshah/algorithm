@@ -18,14 +18,9 @@ public class MaximumSubarray {
 	static boolean firstime = true;
 	
 	public static void main(String args[]){
-		ArrayInput arr = new ArrayInput();
-		arraylist = new int[SIZE];
-		arraylist = arr.getArray(SIZE);
-		
-		for (int i : arraylist) {
-			System.out.print(i + " ");
-		}
-		System.out.println("\n");
+		ArrayInput arr = new ArrayInput(SIZE);
+		arraylist = arr.getArray();
+		arr.printArray(arraylist);
 		
 		int startIndex = 0;
 		int lastIndex = arraylist.length - 1;
