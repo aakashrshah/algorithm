@@ -3,7 +3,7 @@ package sorting;
 import inputs.ArrayInput;
 
 public class SelctionSort {
-	final static int SIZE = 10;
+	final static int SIZE = 5;
 	
 	public static void main(String args[]){
 		ArrayInput arr = new ArrayInput(SIZE);
@@ -23,12 +23,12 @@ public class SelctionSort {
 					d = j;
 				}
 			}
-			swap(arraylist,d,i);
-			for (int item : arraylist) {
-				System.out.print(item + " ");
-			}
-			System.out.println();
+			swap(arraylist,d,i);	
 		}
+		for (int item : arraylist) {
+			System.out.print(item + " ");
+		}
+		
 	}
 	
 	private static void swap(int arraylist[],int i, int j) {

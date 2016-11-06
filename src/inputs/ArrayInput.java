@@ -62,7 +62,7 @@ public class ArrayInput {
 	}
 	
 	public int[] getDummyArray(){
-		return arraylist = new int[] {-5, 1 ,-5 ,-4, 0 };
+		return arraylist = new int[] {5,6,4,1, 2,8};
 	}
 	
 	public void printArray(int[] arraylist){
@@ -70,5 +70,17 @@ public class ArrayInput {
 			System.out.print(i + " ");
 		}
 		System.out.println("\n");
+	}
+	
+	public double[] getPDoubleArray(){
+		return new double[] {0, 0.1, 0.05, 0.1, 0.25, 0.15, 0.1};
+//		return new double[] {0, 0.1, 0.2, 0.3, 0.1};
+
+	}
+	
+	public double[] getQDoubleArray(){
+		return new double[] {0,    0, 0.05, 0.05, 0.05, 0.05, 0.05};
+//		return new double[] {0, 0.1, 0.05, 0.05, 0.1};
+//
 	}
 }

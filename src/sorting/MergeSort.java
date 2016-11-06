@@ -4,7 +4,7 @@ import inputs.ArrayInput;
 
 public class MergeSort {
 
-	final static int SIZE = 10;
+	final static int SIZE = 6;
 	static int[] outputArray = new int[SIZE];
 	
 	public static void main(String args[]){
@@ -22,6 +22,7 @@ public class MergeSort {
 		int[] out = new int[SIZE];
 		
 		if(firstIndex == lastIndex){
+			
 			outputArray[firstIndex] = array[firstIndex];
 			return;
 		}
@@ -30,7 +31,8 @@ public class MergeSort {
 		MergeSortAlgorithm(array, firstIndex, pivot,out);
 		MergeSortAlgorithm(array, pivot+1, lastIndex,out);
 		out = Merge(out,firstIndex,lastIndex,outputArray);
-		for (int i : outputArray) {
+
+		for (int i : out) {
 			System.out.print(i + " ");
 		}
 		System.out.println();
