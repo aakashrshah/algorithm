@@ -179,7 +179,7 @@ public class GraphInput {
 											{2  ,inf,  0, inf,  2},
 											{3  ,  8,inf,   0, 10},
 											{5  ,  3,  2,  10,  0}
-										};
+										};  
 	}
 	
 	public void printGraph(int[][] graphmatrix){
