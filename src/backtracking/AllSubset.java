@@ -4,12 +4,10 @@ public class AllSubset extends Backtracking implements ApplicationInteface{
 
 
 	static int a0 = -1;
-	static int N;
 	
 	public AllSubset(int n) {
 		//Backtrack(a0,N,r);
 		super(a0,n,0);
-		N = n;
 		Backtrack();
 	}
 

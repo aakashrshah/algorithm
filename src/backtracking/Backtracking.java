@@ -2,8 +2,8 @@ package backtracking;
 
 public abstract class Backtracking{
 	
-	int r  = 0;
-	int N = 5;
+	int r;
+	int N;
 	int[] x;
 	int a0;
 	

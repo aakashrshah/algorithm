@@ -5,7 +5,6 @@ import inputs.GraphInput;
 public class AllDirectedGraphs extends Backtracking implements ApplicationInteface{
 	
 	static int a0 = -1;
-	int N;
 	int grDim;
 	static int[][] x2;
 	GraphInput gr;
@@ -13,7 +12,6 @@ public class AllDirectedGraphs extends Backtracking implements ApplicationIntefa
 	public AllDirectedGraphs(int n) {
 		//Backtrack(a0,N,r);
 		super(a0,n*n,0);
-		this.N = n*n;
 		this.grDim = n;
 		x2 = new int[this.grDim][this.grDim];
 		Backtrack();

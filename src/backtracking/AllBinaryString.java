@@ -3,12 +3,10 @@ package backtracking;
 public class AllBinaryString extends Backtracking implements ApplicationInteface{
 
 	static int a0 = -1;
-	static int N;
 	
 	public AllBinaryString(int n) {
 		//Backtrack(a0,N,r);
 		super(a0,n,0);
-		N = n;
 		Backtrack();
 	}
 
