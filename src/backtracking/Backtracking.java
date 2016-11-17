@@ -4,16 +4,15 @@ public abstract class Backtracking{
 	
 	int r  = 0;
 	int N = 5;
-	static int[] x;
+	int[] x;
 	int a0;
 	
 	public Backtracking(int a0,int n,int r){
 		this.a0 = a0;
 		this.N = n;
 		this.r = r;
-		x = new int[this.N];
+		this.x = new int[this.N];
 	}
-	
 	
 	public void Backtrack(){
 		for(int i=0;i<N;i++){

@@ -13,9 +13,8 @@ public class GraphInput {
 	public GraphInput(int graphSize){
 		this.SIZE = graphSize;
 	}
-	
-	
-	
+
+
 	public int[][] getDirectedGraph(){
 		//Random Graph
 		graphmatrix = new int[SIZE][SIZE];
@@ -37,6 +36,8 @@ public class GraphInput {
 		
 		return graphmatrix;
 	}
+	
+	
 	
 	
 	
