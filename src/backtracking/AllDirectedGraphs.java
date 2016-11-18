@@ -4,6 +4,8 @@ import inputs.GraphInput;
 
 public class AllDirectedGraphs extends Backtracking implements ApplicationInteface{
 	
+	int count = 0;
+	//x[i] = ith node is 0 if there is no edge in the graph at i,j and 1 if there is.
 	static int a0 = -1;
 	int grDim;
 	static int[][] x2;
@@ -15,6 +17,7 @@ public class AllDirectedGraphs extends Backtracking implements ApplicationIntefa
 		this.grDim = n;
 		x2 = new int[this.grDim][this.grDim];
 		Backtrack();
+		System.out.println("Total Outcomes : " + count);
 	}
 
 	@Override
@@ -39,6 +42,7 @@ public class AllDirectedGraphs extends Backtracking implements ApplicationIntefa
 		}
 		gr = new GraphInput(this.grDim);
 		this.gr.printGraph(x2);
+		this.count++;
 	}
 
 }

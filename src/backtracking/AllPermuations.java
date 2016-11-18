@@ -4,10 +4,11 @@ public class AllPermuations extends Backtracking implements ApplicationInteface{
 	
 	static int a0 = -1;
 //	static int a0 = 0;
-	
+	int count = 0;
 	public AllPermuations(int n) {
 		super(a0, n, 0);
 		Backtrack();
+		System.out.println("Total Outcomes : " + count);
 	}
 
 	@Override
@@ -28,7 +29,7 @@ public class AllPermuations extends Backtracking implements ApplicationInteface{
 			}
 		}
 		return false;
-		
+		//1-Index
 //		for(int i = 1; i <= this.N; i++){
 //			if(i == xr){
 //				return true;
@@ -43,7 +44,9 @@ public class AllPermuations extends Backtracking implements ApplicationInteface{
 			System.out.print(x[i] + " ");
 		}
 		System.out.println();
+		this.count++;
 	}
+	
 
 
 }

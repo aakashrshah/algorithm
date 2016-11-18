@@ -2,13 +2,15 @@ package backtracking;
 
 public class AllSubset extends Backtracking implements ApplicationInteface{ 
 
-
+	//x[i] = can be either 0 if it is not in the subset, 1 if it is.
 	static int a0 = -1;
+	int count = 0;
 	
 	public AllSubset(int n) {
 		//Backtrack(a0,N,r);
 		super(a0,n,0);
 		Backtrack();
+		System.out.println("Total Outcomes : " + count);
 	}
 
 	@Override
@@ -36,6 +38,8 @@ public class AllSubset extends Backtracking implements ApplicationInteface{
 		System.out.print("}");
 
 		System.out.println("");
+		this.count++;
+
 	}
 
 }

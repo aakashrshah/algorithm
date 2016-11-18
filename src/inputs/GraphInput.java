@@ -9,6 +9,7 @@ public class GraphInput {
 	Scanner scnr = new Scanner(System.in);
 	int SIZE=0;
 	int inf = 999;
+
 	
 	public GraphInput(int graphSize){
 		this.SIZE = graphSize;
@@ -181,6 +182,50 @@ public class GraphInput {
 											{3  ,  8,inf,   0, 10},
 											{5  ,  3,  2,  10,  0}
 										};  
+	}
+	
+//	int[][] dummyUnweightedUndirectedGraph = new int [][] {
+//											{0  ,  1,  1,  1,  1}, 
+//											{0  ,  0,  1,  1,  1},
+//											{0  ,  0,  0,  1,  1},
+//											{0  ,  0,  0,  0,  1},
+//											{0  ,  0,  0,  0,  0}
+//										};
+	
+	int[][] dummyUnweightedUndirectedGraph = new int [][] {
+											{0  ,  1,  1,  0,  1}, 
+											{0  ,  0,  1,  0,  0},
+											{0  ,  0,  0,  1,  0},
+											{0  ,  0,  0,  0,  1},
+											{0  ,  0,  0,  0,  0}
+	};
+	
+	
+	public int[][] getUnweightedUndirectedGraph(int seed){
+		//Random Graph
+		rand = new Random(seed);
+		graphmatrix = new int[SIZE][SIZE];
+		
+		if(SIZE == 0){
+			graphmatrix[0][0] = 0;
+			return graphmatrix;	
+		}
+		
+		for (int i=0;i<SIZE;i++){
+			for(int j=i;j<SIZE;j++){
+				if(i == j){
+					graphmatrix[i][j] = 0;
+				}else{
+					if(seed == 0){
+						graphmatrix[i][j] = dummyUnweightedUndirectedGraph[i][j];
+					}else{
+						graphmatrix[i][j] = Math.abs(rand.nextInt()  % 2);
+					}
+				}
+			}
+		}
+		
+		return graphmatrix;
 	}
 	
 	public void printGraph(int[][] graphmatrix){
