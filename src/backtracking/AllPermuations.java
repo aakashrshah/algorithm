@@ -5,6 +5,9 @@ public class AllPermuations extends Backtracking implements ApplicationInteface{
 	static int a0 = -1;
 //	static int a0 = 0;
 	int count = 0;
+	
+	//x[i] = ith bit of subset.
+	//Can also be used to find isomers in a complete graph
 	public AllPermuations(int n) {
 		super(a0, n, 0);
 		Backtrack();

@@ -17,10 +17,13 @@ public class Client {
 		
 //		AllPermuations ap = new AllPermuations(3);
 		
-		gr = new GraphInput(3);
-		int[][] graph = gr.getUnweightedUndirectedGraph(0);
-		AllHamiltonianCycles ah = new AllHamiltonianCycles(3,graph);
+//		gr = new GraphInput(5);
+//		int[][] graph = gr.getUnweightedUndirectedGraph(0);
+//		AllHamiltonianCycles ah = new AllHamiltonianCycles(5,graph);
 		
+		gr = new GraphInput(5);
+		int[][] graph = gr.getUnweightedUndirectedGraph(0);
+		Automorphism ah = new Automorphism(5,graph);
 		
 	}
 }

@@ -1,6 +1,6 @@
 package backtracking;
 
-public class AllHamiltonianCycles extends Backtracking implements ApplicationInteface{
+public class Automorphism extends Backtracking implements ApplicationInteface{
 
 	//x[i] = label of ith node.
 	int count = 0;
@@ -8,7 +8,7 @@ public class AllHamiltonianCycles extends Backtracking implements ApplicationInt
 	int n;
 	int[][] gr;
 	
-	public AllHamiltonianCycles(int n,int[][] graph) {
+	public Automorphism(int n,int[][] graph) {
 		super(a0, n, 0);
 		this.n = n;
 		this.gr = graph;
@@ -26,13 +26,19 @@ public class AllHamiltonianCycles extends Backtracking implements ApplicationInt
 		if(r2 > 0 && !isAnEdge(x2[r2-1],x2[r2])){
 			return false;
 		}
-		if((r2 == (this.n - 1)) && !isAnEdge(x2[0],x2[n-1])){
-			return false;
-		}
 		return true;
 	}
 
-
+	@Override
+	public boolean Domain(int xr) {
+		for(int i = 1; i <= this.N; i++){
+			if(i == xr){
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	private boolean isAnEdge(int i, int j) {
 //		System.out.println(i + " " + j);
 		if(i<j){
@@ -48,29 +54,10 @@ public class AllHamiltonianCycles extends Backtracking implements ApplicationInt
 	}
 
 	@Override
-	public boolean Domain(int xr) {
-//		for(int i = 0; i < this.N; i++){
-//			if(i == xr){
-//				return true;
-//			}
-//		}
-//		return false;
-		
-//		1-Index
-		for(int i = 1; i <= this.N; i++){
-			if(i == xr){
-				return true;
-			}
-		}
-		return false;
-	}
-
-	@Override
 	public void Print() {
 		for(int i = 0; i < this.N; i++){
 			System.out.print(x[i] + " ");
 		}
-		System.out.print(x[0]);
 		System.out.println();	
 		this.count++;
 	}
