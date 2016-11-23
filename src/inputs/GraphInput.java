@@ -184,23 +184,23 @@ public class GraphInput {
 										};  
 	}
 	
-//	int[][] dummyUnweightedUndirectedGraph = new int [][] {
-//											{0  ,  1,  1,  1,  1}, 
-//											{0  ,  0,  1,  1,  1},
-//											{0  ,  0,  0,  1,  1},
-//											{0  ,  0,  0,  0,  1},
-//											{0  ,  0,  0,  0,  0}
-//										};
-	
 	int[][] dummyUnweightedUndirectedGraph = new int [][] {
-											{0  ,  0,  0,  1,  0, 0}, 
-											{0  ,  0,  0,  1,  0, 0},
-											{0  ,  0,  0,  1,  0, 0},
-											{0  ,  0,  0,  0,  1, 0},
-											{0  ,  0,  0,  0,  0, 1},
-											{0  ,  0,  0,  0,  0, 0}
+											{0  ,  1,  0,  0,  1}, 
+											{0  ,  0,  1,  0,  0},
+											{0  ,  0,  0,  1,  0},
+											{0  ,  0,  0,  0,  1},
+											{0  ,  0,  0,  0,  0}
+										};
+	
+//	int[][] dummyUnweightedUndirectedGraph = new int [][] {
+//											{1  ,  2,  3,  4,  2, 0}, 
+//											{4  ,  5 , 6,  8,  3, 0},
+//											{7  ,  8,  10,  12,  0, 0},
+//											{5  ,  6,  0,  15,  1, 0},
+//											{1  ,  0,  0,  5,  4, 1},
+//											{0  ,  0,  0,  0,  0, 0}
 
-	};
+//	};
 	
 	
 	public int[][] getUnweightedUndirectedGraph(int seed){
@@ -229,6 +229,32 @@ public class GraphInput {
 		
 		return graphmatrix;
 	}
+	
+	public int[][] getSquareMatrix(int seed){
+		//Random Graph
+		rand = new Random(seed);
+		graphmatrix = new int[SIZE][SIZE];
+		
+		if(SIZE == 0){
+			graphmatrix[0][0] = 0;
+			return graphmatrix;	
+		}
+		
+		for (int i=0;i<SIZE;i++){
+			for(int j=0;j<SIZE;j++){
+				
+					if(seed == 0){
+						graphmatrix[i][j] = dummyUnweightedUndirectedGraph[i][j];
+					}else{
+						graphmatrix[i][j] = Math.abs(rand.nextInt()  % 2);
+					}
+				
+			}
+		}
+		
+		return graphmatrix;
+	}
+	
 	
 	public void printGraph(int[][] graphmatrix){
 		for (int i=0;i<SIZE;i++){

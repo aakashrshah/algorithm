@@ -48,6 +48,7 @@ public abstract class Backtracking{
 	}
 
 
+
 	protected abstract boolean Bound(int[] x2, int r2);
 	protected abstract boolean Domain(int i);
 	protected abstract void Print();

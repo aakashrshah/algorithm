@@ -21,9 +21,19 @@ public class Client {
 //		int[][] graph = gr.getUnweightedUndirectedGraph(0);
 //		AllHamiltonianCycles ah = new AllHamiltonianCycles(5,graph);
 		
-		gr = new GraphInput(4);
+		//Similar to Cliques
+//		gr = new GraphInput(4);
+//		int[][] graph = gr.getUnweightedUndirectedGraph(0);
+//		Automorphism ah = new Automorphism(4,graph);
+		
+//		int c = 16;
+//		gr = new GraphInput(3);
+//		int[][] graph = gr.getSquareMatrix(0);
+//		AllCBoundSelections acbs = new AllCBoundSelections(3,graph,c);
+		
+		gr = new GraphInput(5);
 		int[][] graph = gr.getUnweightedUndirectedGraph(0);
-		Automorphism ah = new Automorphism(4,graph);
+		AllCycleRepresentation ac = new AllCycleRepresentation(5,graph);
 		
 	}
 }
